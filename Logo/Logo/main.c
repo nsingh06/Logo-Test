@@ -12,25 +12,24 @@
 #define BAUD 9600
 #define HIGH 1
 #define LOW 0
-#define BUFFER 1024 
+#define BUFFER 1024
 #define BLACK 0x000001
 
 int main(void)
 {
+	DDRD |= 0x1C;
+	PORTD &= ~0x1C;
+	PORTD |= 0x00;
 	
-	// DDRD |= 0x1C;		
-	// PORTD &= ~0x1C;		
-	// PORTD |= 0x00;   
-    lcd_init();
+	lcd_init();
 	lcd_command(CMD_DISPLAY_ON);
- 	lcd_set_brightness(0x18);
+	lcd_set_brightness(0x18);
 	write_buffer(buffer);
 	_delay_ms(1500);
 	
-	 
-	while (1) 
-    {
+	while (1)
+	{
 
-    }
+	}
 }
 

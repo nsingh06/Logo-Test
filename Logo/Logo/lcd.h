@@ -41,14 +41,14 @@
 extern uint8_t buffer[128*64/8];
 void spiwrite(uint8_t c);
 
+
 void lcd_init(void);				
 void lcd_command(uint8_t c);		
 void lcd_data(uint8_t c);		
 void lcd_set_brightness(uint8_t val);  
 
-void clear_screen(void);				//instead of clear_display
+
+void clear_screen(void);				
 void clear_buffer(uint8_t *buffer);
 void write_buffer(uint8_t *buffer);
-
-void testdrawbitmap(uint8_t *buff, const uint8_t *bitmap, uint8_t w, uint8_t h);
 

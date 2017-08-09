@@ -119,10 +119,9 @@ void clear_screen(void) {
   uint8_t p, c;
   
   for(p = 0; p < 8; p++) {
-   
+    
     lcd_command(CMD_SET_PAGE | p);
     for(c = 0; c < 129; c++) {
-      
       lcd_command(CMD_SET_COLUMN_LOWER | (c & 0xf));
       lcd_command(CMD_SET_COLUMN_UPPER | ((c >> 4) & 0xf));
       lcd_data(0x0);
@@ -185,9 +184,8 @@ inline void spiwrite(uint8_t c) {
     SCLK_PORT |= _BV(SCLK);
   }
 
-  
+ 
 }
-
 void lcd_command(uint8_t c) {
   A0_PORT &= ~_BV(A0);
 
@@ -199,7 +197,6 @@ void lcd_data(uint8_t c) {
 
   spiwrite(c);
 }
-
 void lcd_set_brightness(uint8_t val) {
     lcd_command(CMD_SET_VOLUME_FIRST);
     lcd_command(CMD_SET_VOLUME_SECOND | (val & 0x3f));
@@ -216,6 +213,7 @@ void write_buffer(uint8_t *buffer) {
     lcd_command(CMD_SET_COLUMN_UPPER | ((0x0 >> 4) & 0xf));
     lcd_command(CMD_RMW);
     lcd_data(0xff);
+    
     
     for(c = 0; c < 128; c++) {
       lcd_data(buffer[(128*p)+c]);
